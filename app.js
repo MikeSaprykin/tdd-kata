@@ -8,9 +8,26 @@ var sumString = function(string){
     splitString = splitString[1].split(delimiter)
   }
 
+  var negativeInputs = [];
   var sum = 0;
     for(var i = 0; i < splitString.length; i++){
-      sum += (+splitString[i])
+      if(+splitString[i] >= 0){
+        sum += (+splitString[i])
+      }else{
+        negativeInputs.push(+splitString[i])
+      }
     }
-    return sum;
+  if(negativeInputs.length > 0){
+    return generateMessage(negativeInputs)
+  }else{
+    return sum
+  }
+
+  function generateMessage (arr){
+    var message = 'Negatives are not allowed:';
+    for(var i = 0;i < arr.length; i++){
+      message += ' ' + arr[i]
+    }
+    return message;
+  }
 };

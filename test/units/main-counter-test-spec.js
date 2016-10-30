@@ -48,4 +48,14 @@ describe('Testing string calculator',function(){
       expect(sumString("//.\n1.2.8.12.3.4")).toBe(30);
     })
   });
+  
+  describe('Throw exception with list of negatives',function(){
+    it('should return an exception message with list of negatives if there is at least one negative',function () {
+      expect(sumString("1,2,-2")).toBe('Negatives are not allowed: -2');
+      expect(sumString("1,2,-2,-4")).toBe('Negatives are not allowed: -2 -4');
+      expect(sumString("1,2\n-2")).toBe('Negatives are not allowed: -2');
+      expect(sumString("//:\n1:2:-2:-3:-5")).toBe('Negatives are not allowed: -2 -3 -5')
+    })
+  })
+
 });
